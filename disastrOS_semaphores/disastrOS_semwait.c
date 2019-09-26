@@ -7,5 +7,6 @@
 #include "disastrOS_semdescriptor.h"
 
 void internal_semWait(){
-  // do stuff :)
+  int semaphore = running->syscall_args[0];
+  SemDescriptors semaphoreDe=
 }
