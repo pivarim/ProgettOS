@@ -194,6 +194,7 @@ void disastrOS_start(void (*f)(void*), void* f_args, char* logfile){
 
   syscall_vector[DSOS_CALL_SEMWAIT]      = internal_semWait;
   syscall_numarg[DSOS_CALL_SEMWAIT]      = 1;
+
   
   // setup the scheduling lists
   running=0;
@@ -305,7 +306,10 @@ int disastrOS_destroyResource(int resource_id) {
   return disastrOS_syscall(DSOS_CALL_DESTROY_RESOURCE, resource_id);
 }
 
-
+// function who call the syscall semwait
+int disastrOS_semWait(int fd) {
+    return disastrOS_syscall(DSOS_CALL_SEMWAIT, fd);
+}
 
 void disastrOS_printStatus(){
   printf("****************** DisastrOS ******************\n");
