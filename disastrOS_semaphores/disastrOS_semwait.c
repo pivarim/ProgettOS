@@ -8,7 +8,7 @@
 
 void internal_semWait(){
   int sem_fd = running->syscall_args[0];
-  SemDescriptor* sem_ds=SemDescriptorsList_byFd(&running->sem_descriptors,sem_fd);
+  SemDescriptor* sem_ds=SemDescriptorList_byFd(&running->sem_descriptors,sem_fd);
 
   Semaphore* sem= sem_ds->semaphore;
 
@@ -16,13 +16,15 @@ void internal_semWait(){
 
   if(sem->count<0){
 
+    List_detach(&sem->descriptors, (ListItem*)sem_ptr);
+
   	List_insert(&sem->waiting_descriptors, sem->waiting_descriptors.last, (ListItem*)sem_ds->ptr);
   	
   	running->status = Waiting;
 
   	List_insert(&waiting_list, waiting_list.last, (ListItem*) running);
 
-  	PCB* pcb = List_detach(&ready_list, (ListItem*)ready_list.first);
+  	PCB* pcb = (PCB*) List_detach(&ready_list, (ListItem*)ready_list.first);
 
   	running = (PCB*)pcb;
 
