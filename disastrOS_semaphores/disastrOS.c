@@ -148,6 +148,10 @@ void disastrOS_start(void (*f)(void*), void* f_args, char* logfile){
   Descriptor_init();
   init_pcb=0;
 
+  //initialization of semaphore and semdesriptor list
+  Semaphore_init(); 
+  SemDescriptor_init();
+
   // populate the vector of syscalls and number of arguments for each syscall
   for (int i=0; i<DSOS_MAX_SYSCALLS; ++i){
     syscall_vector[i]=0;
