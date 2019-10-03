@@ -19,12 +19,12 @@ void internal_semOpen(){
   if(s == NULL){
    return;
   }
-  SemDescriptor* d = Descriptor_alloc(running->last_sem_fd, s, running);
-  List_insert(&running->sem_descriptors, running->sem_descriptors.last, d);
+  SemDescriptor* d = SemDescriptor_alloc(running->last_sem_fd, s, running);
+  List_insert(&running->sem_descriptors, running->sem_descriptors.last, (ListItem *) d);
   running->last_sem_fd++;
-  SemDescriptorPtr* sem_descriptorPtr = DescriptorPtr_alloc(d);
+  SemDescriptorPtr* sem_descriptorPtr = SemDescriptorPtr_alloc(d);
   d->ptr = sem_descriptorPtr;
-  List_insert(&s->descriptors, s->descriptors.last, sem_descriptorPtr);
+  List_insert(&s->descriptors, s->descriptors.last, (ListItem *) sem_descriptorPtr);
   return;
 }
 
