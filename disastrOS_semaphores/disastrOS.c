@@ -310,6 +310,10 @@ int disastrOS_destroyResource(int resource_id) {
 int disastrOS_semWait(int fd) {
     return disastrOS_syscall(DSOS_CALL_SEMWAIT, fd);
 }
+//function who call the syscall sempost
+int disastrOS_semPost(int fd) {
+    return disastrOS_syscall(DSOS_CALL_SEMPOST, fd);
+}
 
 void disastrOS_printStatus(){
   printf("****************** DisastrOS ******************\n");

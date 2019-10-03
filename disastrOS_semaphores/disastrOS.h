@@ -42,3 +42,4 @@ void disastrOS_printStatus();
 //function implement for the semaphore
 
 void disastrOS_semWait(int fd);
+void disastrOS_semPost(int fd);
