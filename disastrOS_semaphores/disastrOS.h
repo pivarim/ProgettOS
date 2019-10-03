@@ -41,5 +41,6 @@ void disastrOS_printStatus();
 
 //function implement for the semaphore
 
+int disastrOS_semOpen(int id,  int semCount);
 int disastrOS_semWait(int fd);
 int disastrOS_semPost(int fd);
