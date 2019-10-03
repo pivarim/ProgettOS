@@ -306,6 +306,11 @@ int disastrOS_destroyResource(int resource_id) {
   return disastrOS_syscall(DSOS_CALL_DESTROY_RESOURCE, resource_id);
 }
 
+// function that calls the syscall semopen
+int disastrOS_semOpen(int id, int semCount) {
+    return disastrOS_syscall(DSOS_CALL_SEMOPEN, id, semCount);
+}
+
 // function who call the syscall semwait
 int disastrOS_semWait(int fd) {
     return disastrOS_syscall(DSOS_CALL_SEMWAIT, fd);
