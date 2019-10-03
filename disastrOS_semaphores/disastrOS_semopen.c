@@ -7,5 +7,21 @@
 #include "disastrOS_semdescriptor.h"
 
 void internal_semOpen(){
-  // do stuff :)
+  
+  int semaphoreCount;
+  if(semaphoreCount < 1){
+   return; 
+  }
+  int id;
+  if(SemaphoreList_byId(semaphosres_list, id) == 0){
+    return;
+  }
+  Semaphore s = Semaphore_alloc(id, count);
+  if(){
+  
+  }
+  
+  
 }
+
+
