@@ -10,7 +10,7 @@ void internal_semPost(){
   int sem_fd = running->syscall_args[0];
   SemDescriptor* sem_ds=SemDescriptorList_byFd(&running->sem_descriptors,sem_fd);
   if(sem_ds==0){
-    printf("internal_semPost error semaphore:%d\n",sem_fd);
+    printf("internal_semPost error, semaphore:%d\n",sem_fd);
     return;
   }
 
