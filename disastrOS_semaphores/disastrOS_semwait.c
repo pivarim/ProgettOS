@@ -35,6 +35,6 @@ void internal_semWait(){
 
   }
   sem->count--;
-
+  running->syscall_retvalue = 0;//return value of the systemcall
   return;
 }
