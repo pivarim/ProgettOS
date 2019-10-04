@@ -34,7 +34,7 @@ void internal_semWait(){
   	running = (PCB*)pcb;
 
   }
-  s->count--;
+  sem->count--;
 
   return;
 }
