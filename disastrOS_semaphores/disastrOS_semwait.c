@@ -9,6 +9,11 @@
 void internal_semWait(){
   int sem_fd = running->syscall_args[0];
   SemDescriptor* sem_ds=SemDescriptorList_byFd(&running->sem_descriptors,sem_fd);
+  //error control for semaphore
+  if(sem_ds==0){
+    printf("internal_semWait error semaphore:%d\n",sem_fd);
+    return;
+  }
 
   Semaphore* sem= sem_ds->semaphore;
 
