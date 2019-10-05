@@ -23,10 +23,12 @@ void internal_semOpen(){
    return;
   }
   SemDescriptor* d = SemDescriptor_alloc(running->last_sem_fd, s, running);
+  if(d == NULL){
   printf("ERROR - unable to allocate descriptor of semaphore with id = %d: unknown error.", id);
    return;
   }
   SemDescriptorPtr* sem_descriptorPtr = SemDescriptorPtr_alloc(d);
+  if(sem_descriptorPtr){
   printf("ERROR - unable to allocate pointer to descriptor of semaphore with id = %d: unknown error.", id);
    return;
   }
