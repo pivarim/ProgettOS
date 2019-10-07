@@ -34,7 +34,7 @@ void internal_semClose(){
   if(s->descriptors.size == 0 && s->waiting_descriptors.size==0){
    List_detach(&semaphores_list, (ListItem*)s);
    Semaphore_free(s);
-   printf("Semaphore with id=%d closed.\n",id);
+   printf("SUCCESS - Semaphore with id=%d closed.\n",id);
   }
   running->syscall_retvalue = 0;
   return;

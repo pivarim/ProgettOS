@@ -21,19 +21,19 @@ void internal_semOpen(){
   }
   Semaphore* s = Semaphore_alloc(id, semaphoreCount);
   if(s == NULL){
-   printf("ERROR - unable to allocate semaphore with id = %d: unknown error.", id);
+   printf("ERROR - Unable to allocate semaphore with id = %d: unknown error.", id);
    running->syscall_retvalue = DSOS_ESEMOPEN;
    return;
   }
   SemDescriptor* d = SemDescriptor_alloc(running->last_sem_fd, s, running);
   if(d == NULL){
-   printf("ERROR - unable to allocate descriptor of semaphore with id = %d: unknown error.", id);
+   printf("ERROR - Unable to allocate descriptor of semaphore with id = %d: unknown error.", id);
    running->syscall_retvalue = DSOS_ESEMOPEN;
    return;
   }
   SemDescriptorPtr* sem_descriptorPtr = SemDescriptorPtr_alloc(d);
   if(sem_descriptorPtr){
-   printf("ERROR - unable to allocate pointer to descriptor of semaphore with id = %d: unknown error.", id);
+   printf("ERROR - Unable to allocate pointer to descriptor of semaphore with id = %d: unknown error.", id);
    running->syscall_retvalue = DSOS_ESEMOPEN;
    return;
   }
@@ -42,6 +42,7 @@ void internal_semOpen(){
 
   d->ptr = sem_descriptorPtr;
   List_insert(&s->descriptors, s->descriptors.last, (ListItem *) sem_descriptorPtr);
+  printf("SUCCESS - Opened semaphore with id = %d.", id);
   running->syscall_retvalue = d->fd;
   return;
 }
