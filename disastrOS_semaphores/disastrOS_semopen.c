@@ -8,7 +8,7 @@
 
 void internal_semOpen(){
   int id = running->syscall_args[0];
-  if(SemaphoreList_byId(&semaphores_list, id) == 0){
+  if(SemaphoreList_byId(&semaphores_list, id) != 0){
    printf("ERROR - Semaphore with id = %d already exists.", id);
    running->syscall_retvalue = DSOS_ESEMOPEN;
    return;
