@@ -37,7 +37,6 @@ void internal_semOpen(){
 
   //Inserts the semaphore in the list of semaphores
   List_insert(&semaphores_list, semaphores_list.last, (ListItem*) s);
-  }
 
   //Allocates descriptor of semaphore
   SemDescriptor* d = SemDescriptor_alloc(running->last_sem_fd, s, running);
