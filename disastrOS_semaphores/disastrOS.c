@@ -325,6 +325,10 @@ int disastrOS_semWait(int fd) {
 int disastrOS_semPost(int fd) {
     return disastrOS_syscall(DSOS_CALL_SEMPOST, fd);
 }
+//function that calls the syscall semclose
+int disastrOS_semClose(int id) {
+    return disastrOS_syscall(DSOS_CALL_SEMCLOSE, id);
+}
 
 void disastrOS_printStatus(){
   printf("****************** DisastrOS ******************\n");
