@@ -12,6 +12,7 @@ void internal_semWait(){
   //error control for semaphore
   if(sem_ds==0){
     printf("internal_semWait error, semaphore:%d\n",sem_fd);
+    running->syscall_retvalue = DSOS_ESEMWAIT;
     return;
   }
 

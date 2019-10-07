@@ -11,6 +11,7 @@ void internal_semPost(){
   SemDescriptor* sem_ds=SemDescriptorList_byFd(&running->sem_descriptors,sem_fd);
   if(sem_ds==0){
     printf("internal_semPost error, semaphore:%d\n",sem_fd);
+    running->syscall_retvalue = DSOS_ESEMPOST;
     return;
   }
 
