@@ -30,6 +30,8 @@
 #define DSOS_ERESOURCEINUSE -13
 #define DSOS_ESEMPOST -14
 #define DSOS_ESEMWAIT -15
+#define DSOS_ESEMOPEN -16
+#define DSOS_ESEMCLOSE -17
 
 // syscall numbers
 #define DSOS_MAX_SYSCALLS 32

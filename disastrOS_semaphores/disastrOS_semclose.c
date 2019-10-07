@@ -11,16 +11,19 @@ void internal_semClose(){
   SemDescriptor* d = SemDescriptorList_byFd(&running->sem_descriptors, id);
   if(d == NULL){
    printf("ERROR - unable to find semdescriptor of the semaphore with id = %d.\n", id);
+   running->syscall_retvalue = DSOS_ESEMCLOSE;
    return;
   }
   Semaphore* s = d->semaphore;
   if(s == NULL){
    printf("ERROR - unable to find semaphore with id = %d from its descriptor.\n", id);
+   running->syscall_retvalue = DSOS_ESEMCLOSE;
    return;
   }
   SemDescriptorPtr* dptr = d->ptr;
   if(dptr == NULL){
    printf("ERROR - unable to find pointer to descriptor of semaphore with id = %d from its descriptor.\n", id);
+   running->syscall_retvalue = DSOS_ESEMCLOSE;
    return;
   }
   List_detach(&running->sem_descriptors, (ListItem *) d);
