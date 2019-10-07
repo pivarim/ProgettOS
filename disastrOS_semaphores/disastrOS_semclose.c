@@ -9,7 +9,7 @@
 void internal_semClose(){
   int id = running->syscall_args[0];
   SemDescriptor* d = SemDescriptorList_byFd(&running->sem_descriptors, id);
-  if(d == NULL){
+  if(d == 0){
    printf("ERROR - unable to find semdescriptor of the semaphore with id = %d.\n", id);
    running->syscall_retvalue = DSOS_ESEMCLOSE;
    return;
