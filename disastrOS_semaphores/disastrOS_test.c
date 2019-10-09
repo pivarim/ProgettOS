@@ -39,8 +39,7 @@ void initFunction(void* args) {
   disastrOS_printStatus();
   printf("hello, I am init and I just started\n");
   disastrOS_spawn(sleeperFunction, 0);
-  
-  int sem1= disastrOS_semOpen(1,1);
+
 
   printf("I feel like to spawn 10 nice threads\n");
   int alive_children=0;

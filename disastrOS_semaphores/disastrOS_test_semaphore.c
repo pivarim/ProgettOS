@@ -14,7 +14,7 @@ void  sem_testing(){
 
 	//test for open close wait and post on a semaphore
 	printf("-TEST1-\nOpening Semaphore, expected no error\n");
- 	sem1= disastrOS_semOpen(1,1);
+ 	sem1= disastrOS_semOpen(0,1);
  	printf("-TEST1-END-\n");
  	printf("-TEST2-\nDecrementing counter of Semaphore(semwait), expected no error\n");
  	disastrOS_semWait(sem1);
@@ -26,9 +26,9 @@ void  sem_testing(){
   	disastrOS_semClose(sem1);
   	printf("-TEST4-END-\n");
 
-  	printf("-TEST5-\nOpening Semaphore, then opening a semaphore with the same id\nExpected error: semaphore with id=1 already exist\n");
-  	sem1= disastrOS_semOpen(1,1);
-  	sem2= disastrOS_semOpen(1,1);
+  	printf("-TEST5-\nOpening Semaphore, then opening another semaphore with the same id\nExpected error: semaphore with id=... already exist\n");
+  	sem1= disastrOS_semOpen(0,1);
+  	sem2= disastrOS_semOpen(0,1);
   	printf("-TEST5-END-\n");
 
   	printf("-TEST6-\n Closing a Semaphore that has never been opened\nExpected error: unable to find semdescriptor of the semaphore\n");
@@ -43,7 +43,7 @@ void  sem_testing(){
   	disastrOS_semWait(sem2);
   	printf("-TEST8-END-\n");
 	
-	printf("Shutdown!");
+	printf("Shutdown!\n");
  	disastrOS_shutdown();
 }
 

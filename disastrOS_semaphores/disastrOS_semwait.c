@@ -38,7 +38,7 @@ void internal_semWait(){
   //refresh the counter of the semaphore
   sem->count--;
 
-  printf("SUCCESS - SemWait on semaphore with id=%d.\n",sem_fd);
+  printf("SUCCESS - SemWait on semaphore with fd=%d.\n",sem_fd);
   //return value of the systemcall
   running->syscall_retvalue = 0;
   return;

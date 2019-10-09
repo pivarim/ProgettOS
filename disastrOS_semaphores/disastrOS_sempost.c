@@ -35,7 +35,7 @@ void internal_semPost(){
   }
   //refresh the counter of the semaphore
   sem->count++;
-  printf("SUCCESS - SemPost on semaphore with id=%d.\n",sem_fd);
+  printf("SUCCESS - SemPost on semaphore with fd=%d.\n",sem_fd);
   //return value of the systemcall
   running->syscall_retvalue = 0;
   return;
