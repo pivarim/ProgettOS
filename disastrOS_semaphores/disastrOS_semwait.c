@@ -20,7 +20,7 @@ void internal_semWait(){
 
   SemDescriptorPtr* sem_ptr= sem_ds->ptr;
 
-  if(sem->count<0){
+  if(sem->count<=0){
     //process's descriptor is removed from descriptor list
     List_detach(&sem->descriptors, (ListItem*)sem_ptr);
     //process's descriptor is added in waiting descriptor list
