@@ -11,7 +11,7 @@ void internal_semWait(){
   SemDescriptor* sem_ds=SemDescriptorList_byFd(&running->sem_descriptors,sem_fd);
   //error control for semaphore
   if(sem_ds==0){//
-    printf("internal_semWait error, semaphore:%d\n",sem_fd);
+    printf("ERROR -semWait- unable to find semdescriptor of the semaphore :%d\n",sem_fd);
     running->syscall_retvalue = DSOS_ESEMWAIT;
     return;
   }
@@ -37,6 +37,8 @@ void internal_semWait(){
   }
   //refresh the counter of the semaphore
   sem->count--;
+
+  printf("SUCCESS - SemWait on semaphore with id=%d.\n",sem_fd);
   //return value of the systemcall
   running->syscall_retvalue = 0;
   return;

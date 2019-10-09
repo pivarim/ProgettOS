@@ -13,15 +13,20 @@ void sleeperFunction(void* args){
   }
 }
 
+
+
 void childFunction(void* args){
   printf("Hello, I am the child function %d\n",disastrOS_getpid());
   printf("I will iterate a bit, before terminating\n");
   int type=0;
   int mode=0;
+
   int fd=disastrOS_openResource(disastrOS_getpid(),type,mode);
   printf("fd=%d\n", fd);
   printf("PID: %d, terminating\n", disastrOS_getpid());
-
+  if(disastrOS_getpid()==2){
+    disastrOS_semClose(0);
+  }
   for (int i=0; i<(disastrOS_getpid()+1); ++i){
     printf("PID: %d, iterate %d\n", disastrOS_getpid(), i);
     disastrOS_sleep((20-disastrOS_getpid())*5);
@@ -35,6 +40,7 @@ void initFunction(void* args) {
   printf("hello, I am init and I just started\n");
   disastrOS_spawn(sleeperFunction, 0);
   
+  int sem1= disastrOS_semOpen(1,1);
 
   printf("I feel like to spawn 10 nice threads\n");
   int alive_children=0;
@@ -61,6 +67,8 @@ void initFunction(void* args) {
   printf("shutdown!");
   disastrOS_shutdown();
 }
+
+
 
 int main(int argc, char** argv){
   char* logfilename=0;
