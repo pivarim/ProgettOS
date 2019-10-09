@@ -9,11 +9,18 @@
 void internal_semOpen(){
   int id = running->syscall_args[0];
 
-  Semaphore* s = SemaphoreList_byId(&semaphores_list, id)
+  Semaphore* s = SemaphoreList_byId(&semaphores_list, id);
   
   //Checks if semaphore deosn't already exists.
   if(s == 0){
    int semaphoreCount = running->syscall_args[1];
+   
+   //Checks if counter is less than 0.
+   if(semaphoreCount < 0){
+    printf("ERROR - Unable to create semaphore with id = %d: counter is less than 0.\n", id);
+    running->syscall_retvalue = DSOS_ESEMOPEN;
+    return; 
+   }
    
    //Allocates the semaphore.
    s = Semaphore_alloc(id, semaphoreCount);
@@ -27,13 +34,6 @@ void internal_semOpen(){
 
   //Inserts the semaphore in the list of semaphores.
   List_insert(&semaphores_list, semaphores_list.last, (ListItem*) s);
-  }
-  
-  //Checks if counter is less than 0.
-  if(semaphoreCount < 0){
-   printf("ERROR - Unable to create semaphore with id = %d: counter is less than 0.\n", id);
-   running->syscall_retvalue = DSOS_ESEMOPEN;
-   return; 
   }
 
   //Allocates descriptor of semaphore.
