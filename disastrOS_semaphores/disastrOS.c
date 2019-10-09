@@ -144,13 +144,11 @@ void disastrOS_start(void (*f)(void*), void* f_args, char* logfile){
   disastrOS_debug("initializing system structures\n");
   PCB_init();
   Timer_init();
-  Semaphore_init();
   Resource_init();
   Descriptor_init();
-  SemDescriptor_init();
   init_pcb=0;
 
-  //initialization of semaphore and semdesriptor list
+  //initialization of semaphore and semdescriptor list
   Semaphore_init(); 
   SemDescriptor_init();
 

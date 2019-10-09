@@ -54,6 +54,7 @@ void internal_semOpen(){
    running->syscall_retvalue = DSOS_ESEMOPEN;
    return;
   }
+
   //Insterts descriptor in the list inside the running pcb.
   List_insert(&running->sem_descriptors, running->sem_descriptors.last, (ListItem *) d);
 
