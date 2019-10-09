@@ -326,8 +326,8 @@ int disastrOS_semPost(int fd) {
     return disastrOS_syscall(DSOS_CALL_SEMPOST, fd);
 }
 //function that calls the syscall semclose
-int disastrOS_semClose(int id) {
-    return disastrOS_syscall(DSOS_CALL_SEMCLOSE, id);
+int disastrOS_semClose(int fd) {
+    return disastrOS_syscall(DSOS_CALL_SEMCLOSE, fd);
 }
 
 void disastrOS_printStatus(){
