@@ -11,7 +11,7 @@ void internal_semOpen(){
 
   //Checks if semaphore already exists.
   if(SemaphoreList_byId(&semaphores_list, id) != 0){
-   printf("ERROR - Semaphore with id = %d already exists.", id);
+   printf("ERROR - Semaphore with id = %d already exists.\n", id);
    running->syscall_retvalue = DSOS_ESEMOPEN;
    return;
   }
