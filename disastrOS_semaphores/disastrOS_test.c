@@ -93,7 +93,7 @@ void initFunction(void* args) {
   printf("Hello, I am init and I just started\n");
 
   shared_resource=1;
-  
+
   printf("I feel like to spawn %d nice threads\n",THREADS_NUM);
   int alive_children=0;
   for (int i=0; i<THREADS_NUM; ++i) {
@@ -112,7 +112,7 @@ void initFunction(void* args) {
     alive_children--;
   }
 
-  printf("shutdown!");
+  printf("Shutdown!\n");
   disastrOS_shutdown();
 }
 

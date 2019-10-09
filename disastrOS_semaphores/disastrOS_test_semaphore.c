@@ -26,7 +26,7 @@ void  sem_testing(){
   	disastrOS_semClose(sem1);
   	printf("-TEST4-END-\n");
 
-  	printf("-TEST5-\nOpening Semaphore, then opening another semaphore with the same id\nExpected error: semaphore with id=... already exist\n");
+  	printf("-TEST5-\nOpening Semaphore, then opening another semaphore with the same id, expected no error\n");
   	sem1= disastrOS_semOpen(0,1);
   	sem2= disastrOS_semOpen(0,1);
   	printf("-TEST5-END-\n");
